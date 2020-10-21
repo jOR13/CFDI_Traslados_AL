@@ -1,61 +1,64 @@
 page 80102 Identificacion_Transporte_Page
 {
-    PageType = Document;
+    PageType = Card;
     ApplicationArea = All;
-    UsageCategory = Administration;
+    UsageCategory = Documents;
     SourceTable = Identificacion_Trans_Table;
+    Editable = true;
+
 
     layout
     {
         area(Content)
         {
-            group(GroupName)
+
+            field(id; Rec.id)
             {
-                field(No; id)
-                {
-                    ApplicationArea = All;
-                    TableRelation = "Transfer Header"."No.";
-
-                }
-
-                field(operador; operador)
-                {
-                    ApplicationArea = All;
-
-                }
-                field(tractor; Rec.tractor)
-                {
-                    ApplicationArea = All;
-                }
-                field(placa; Rec.placa)
-                {
-                    ApplicationArea = All;
-                }
-                field(tanque; Rec.tanque)
-                {
-                    ApplicationArea = All;
-                }
-                field(TanquePlaca; Rec.TanquePlaca)
-                {
-                    ApplicationArea = All;
-                }
+                ApplicationArea = All;
+                //TableRelation = tempTrans.No;
             }
+
+            field("CFDI Relation"; Rec."CFDI Relation")
+            {
+                ApplicationArea = All;
+            }
+
+            field("Nombre del operador"; Rec."Nombre del operador")
+            {
+                ApplicationArea = All;
+            }
+            field("No. Tanque"; Rec."No. Tanque")
+            {
+                ApplicationArea = All;
+
+            }
+            field("No. Placa"; Rec."No. Placa")
+            {
+                ApplicationArea = All;
+            }
+            field("No. Tractor"; Rec."No. Tractor")
+            {
+                ApplicationArea = All;
+            }
+            field("No. Placa tanque"; Rec."No. Placa tanque")
+            {
+                ApplicationArea = All;
+            }
+
+
         }
     }
 
     actions
     {
+        area(Creation)
+        {
+
+        }
         area(Processing)
         {
-            action(ActionName)
-            {
-                ApplicationArea = All;
 
-                trigger OnAction()
-                begin
 
-                end;
-            }
         }
     }
 

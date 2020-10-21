@@ -1,18 +1,34 @@
 pageextension 80100 Transfer_Order_PageExt extends "Transfer Order"
 {
+    Editable = true;
+
     layout
     {
         addafter(Status)
         {
-            field("CFDI Relation"; "CFDI Relation")
-            {
-                ApplicationArea = all;
-            }
+
         }
+
+
+
+
     }
 
     actions
     {
+        modify(Post)
+        {
+            trigger OnBeforeAction()
+            var
+                myInt: Integer;
+            begin
+                if not itt.Get(Rec."No.") then begin
+                    Error('Por favor llene los datos del operador');
+                    exit;
+                end;
+            end;
+        }
+
         addlast(navigation)
         {
             action(Operador)
@@ -22,8 +38,27 @@ pageextension 80100 Transfer_Order_PageExt extends "Transfer Order"
 
                 CaptionML = ENU = 'Operator', ESP = 'Operador';
 
+                trigger OnAction()
+                var
+
+
+                begin
+                    itt.Init();
+                    itt.id := Rec."No.";
+                    if not itt.Insert() then begin
+                        itt.Modify();
+                    end;
+                    Commit();
+                    itt.SetFilter(itt.id, Rec."No.");
+                    itp.SetTableView(itt);
+                    itp.RunModal();
+
+                end;
 
             }
         }
     }
+    var
+        itp: Page Identificacion_Transporte_Page;
+        itt: Record Identificacion_Trans_Table;
 }

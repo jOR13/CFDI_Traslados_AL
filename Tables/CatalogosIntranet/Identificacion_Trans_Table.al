@@ -10,34 +10,39 @@ table 80102 Identificacion_Trans_Table
 
         }
 
-        field(2; operador; Text[250])
+        field(80100; "CFDI Relation"; text[250])
         {
             DataClassification = ToBeClassified;
-
+            TableRelation = "SAT Relationship Type" where("SAT Relationship Type" = filter(= '05|06'));
         }
 
-        field(3; tractor; Text[250])
+        field(2; "Nombre del operador"; Text[250])
         {
             DataClassification = ToBeClassified;
-
+            //TableRelation = Choferes.MyField;
         }
 
-        field(4; placa; Text[250])
+        field(3; "No. Tractor"; Text[250])
         {
             DataClassification = ToBeClassified;
-
         }
 
-        field(5; tanque; Text[250])
+        field(4; "No. Placa"; Text[250])
         {
             DataClassification = ToBeClassified;
-
+            //TableRelation = Choferes.MyField;
         }
 
-        field(6; TanquePlaca; Text[250])
+        field(5; "No. Tanque"; Text[250])
         {
             DataClassification = ToBeClassified;
+            //TableRelation = Vehiculos.MyField;
+        }
 
+        field(6; "No. Placa tanque"; Text[250])
+        {
+            DataClassification = ToBeClassified;
+            //TableRelation = Vehiculos.MyField;
         }
     }
 
