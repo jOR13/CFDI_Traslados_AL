@@ -4,83 +4,59 @@ query 80105 Qry_tc
 
     elements
     {
-        dataitem(Transfer_Shipment_Header; "Transfer Shipment Header")
+        dataitem("Transfer_Shipment_Header"; "Transfer Shipment Header")
         {
-            column(No_; "No.")
-            {
 
-            }
+            column(Transfer_Order_No_; "Transfer Order No.") { }
 
-
+            column(TransferNo_; "No.") { }
 
             dataitem(Item_Ledger_Entry; "Item Ledger Entry")
             {
+                DataItemTableFilter = "Entry Type" = filter(= 'Transfer'), "Document Type" = filter(= 'Transfer Shipment'), Positive = filter(= 'true');
+                DataItemLink = "Order No." = Transfer_Shipment_Header."Transfer Order No.";
 
-
-
-                DataItemLink = "Document No." = Transfer_Shipment_Header."No.";
-
-                DataItemTableFilter = "Entry Type" = filter(= 'Transfer'), Positive = filter(= 'true');
-
-                column(ItemNo; "Item No.")
+                column(Entry_No_; "Entry No.")
                 {
                 }
 
-                column(Lot_No_; "Lot No.")
+                column(Document_No_; "Document No.")
+                { }
+                column(Item_No_;
+                "Item No.")
+                {
+
+                }
+                column(Quantity; Quantity)
                 {
                 }
-                column(Cantidad; Quantity)
+                column(LotNo; "Lot No.")
                 {
                 }
                 column(UnitofMeasureCode; "Unit of Measure Code")
                 {
                 }
-                column(EntryType; "Entry Type")
-                {
-                }
-                column(Positive; Positive)
-                {
-                }
-
-
-
 
                 dataitem(PedimentosTableHG; PedimentosTableHG)
                 {
+                    DataItemLink = DocumentNo = Transfer_Shipment_Header."Transfer Order No.";
 
-                    DataItemLink = Lote = Item_Ledger_Entry."Lot No.";
+                    column(Pedimento; Pedimento)
+                    {
 
-                    column(Concepto; Pedimento)
+                    }
+                    column(Lote; Lote)
+                    {
+                    }
+                    column(PedimentoNo; DocumentNo)
+                    {
+                    }
+                    column(Concepto; Concepto)
                     {
 
                     }
 
-                    dataitem(Item; Item)
-                    {
-                        DataItemLink = "No." = Item_Ledger_Entry."Item No.";
 
-                        column(ClaveProducto; "SAT Item Classification") { }
-
-                        dataitem(Unit_of_Measure; "Unit of Measure")
-                        {
-                            DataItemLink = Code = Item_Ledger_Entry."Unit of Measure Code";
-
-                            column(SAT_UofM_Classification; "SAT UofM Classification")
-                            {
-
-                            }
-
-                            dataitem(SAT_Classification; "SAT Classification")
-                            {
-
-                                DataItemLink = "SAT Classification" = Item."SAT Item Classification";
-
-                                column(Description; Description) { }
-                            }
-                        }
-
-
-                    }
 
 
                 }
@@ -88,11 +64,13 @@ query 80105 Qry_tc
         }
     }
 
+
     var
-        myInt: Integer;
+        conc: Text;
 
     trigger OnBeforeOpen()
     begin
+        // Concepto := PedimentosTableHG.Pedimento + '-';
 
     end;
 }

@@ -35,13 +35,9 @@ pageextension 80100 Transfer_Order_PageExt extends "Transfer Order"
             {
                 Image = UserInterface;
                 ApplicationArea = all;
-
                 CaptionML = ENU = 'Operator', ESP = 'Operador';
-
                 trigger OnAction()
                 var
-
-
                 begin
                     itt.Init();
                     itt.id := Rec."No.";
@@ -52,7 +48,21 @@ pageextension 80100 Transfer_Order_PageExt extends "Transfer Order"
                     itt.SetFilter(itt.id, Rec."No.");
                     itp.SetTableView(itt);
                     itp.RunModal();
+                end;
 
+            }
+
+
+            action(Remesa)
+            {
+                Image = UserInterface;
+                ApplicationArea = all;
+
+                trigger OnAction()
+                var
+                    code: Codeunit CodeUnits;
+                begin
+                    code.getRemesa('32120004397-15');
                 end;
 
             }
