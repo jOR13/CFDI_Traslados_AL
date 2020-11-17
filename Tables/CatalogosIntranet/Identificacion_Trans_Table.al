@@ -14,6 +14,7 @@ table 80102 Identificacion_Trans_Table
         {
             DataClassification = ToBeClassified;
             TableRelation = "SAT Relationship Type" where("SAT Relationship Type" = filter(= '05|06'));
+
         }
 
         field(2; "Nombre del operador"; Text[250])
@@ -27,7 +28,7 @@ table 80102 Identificacion_Trans_Table
             DataClassification = ToBeClassified;
         }
 
-        field(4; "No. Placa"; Text[250])
+        field(4; "No. Placa Tractor"; Text[250])
         {
             DataClassification = ToBeClassified;
             //TableRelation = Choferes.MyField;
@@ -40,6 +41,19 @@ table 80102 Identificacion_Trans_Table
         }
 
         field(6; "No. Placa tanque"; Text[250])
+        {
+            DataClassification = ToBeClassified;
+            //TableRelation = Vehiculos.MyField;
+        }
+
+
+        field(7; "No. Tanque 2"; Text[250])
+        {
+            DataClassification = ToBeClassified;
+            //TableRelation = Vehiculos.MyField;
+        }
+
+        field(8; "No. Placa tanque 2"; Text[250])
         {
             DataClassification = ToBeClassified;
             //TableRelation = Vehiculos.MyField;

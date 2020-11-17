@@ -96,13 +96,18 @@ query 80101 Qry_Traslados
                 column(NoTractor; "No. Tractor")
                 {
                 }
-                column(NoPlaca; "No. Placa")
-                {
-                }
+                column(No__Placa_Tractor; "No. Placa Tractor") { }
+
                 column(NoTanque; "No. Tanque")
                 {
                 }
                 column(NoPlacatanque; "No. Placa tanque")
+                {
+                }
+                column(NoTanque2; "No. Tanque 2")
+                {
+                }
+                column(NoPlacatanque2; "No. Placa tanque 2")
                 {
                 }
 

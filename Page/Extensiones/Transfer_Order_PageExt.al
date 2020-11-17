@@ -8,10 +8,6 @@ pageextension 80100 Transfer_Order_PageExt extends "Transfer Order"
         {
 
         }
-
-
-
-
     }
 
     actions
@@ -41,13 +37,21 @@ pageextension 80100 Transfer_Order_PageExt extends "Transfer Order"
                 begin
                     itt.Init();
                     itt.id := Rec."No.";
+
                     if not itt.Insert() then begin
                         itt.Modify();
                     end;
+
                     Commit();
+
+
                     itt.SetFilter(itt.id, Rec."No.");
                     itp.SetTableView(itt);
                     itp.RunModal();
+
+
+
+
                 end;
 
             }
